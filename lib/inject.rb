@@ -3,12 +3,13 @@
 
 class Array
 
-  def rj_inject(memo)
-    if memo == 0
-      10
-    else
-      24
+  def my_inject(total = nil)
+    copy = self.dup # create copy of array
+    total = total || copy.shift # assign total to argument, or first element of array
+    copy.each do |elem| #from the next available element in the array do
+      total = yield total, elem
     end
+    total
   end
 
 end
